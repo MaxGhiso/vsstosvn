@@ -339,6 +339,8 @@ namespace Cyotek.SourceSafeSvnMigration
 		this.VssRelativeFilePaths = null;
 		this.VssRelativeProjPaths = null;
 		this.Changesets = null;
+		this._checkedOutFilesDetected = false;
+		this._pinned_items_detected = false;
    }
 
     private void CommitChangeset(SvnClient svnClient, Changeset changeset)
