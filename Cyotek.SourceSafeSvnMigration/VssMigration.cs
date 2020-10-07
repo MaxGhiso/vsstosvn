@@ -147,7 +147,7 @@ namespace Cyotek.SourceSafeSvnMigration
 			client.RemoteCreateDirectory(uri, 
 				new SvnCreateDirectoryArgs() {
 					CreateParents = true, 
-					LogMessage = "Created Project Folder"});
+					LogMessage = "Created Root Project Folder"});
 			return uri.ToString();
 		}
 	}
@@ -474,7 +474,8 @@ namespace Cyotek.SourceSafeSvnMigration
         }
 
         client.CreateDirectories(paths, new SvnCreateDirectoryArgs() { CreateParents = true });
-        client.Commit(this.SvnFullRepositoryPath, new SvnCommitArgs() { LogMessage = "Initial directory creation." });
+        string commitMessage = string.Format("VSS Porting from project: {0}. Initial directory creation.", this.VssDatabase.SrcSafeIni);
+        client.Commit(this.SvnFullRepositoryPath, new SvnCommitArgs() { LogMessage = commitMessage });
       }
     }
 
